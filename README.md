@@ -8,7 +8,7 @@ Simple app for results in BundesLiga with API provided by http://www.openligadb.
 git clone https://github.com/6f0a/bundesliga
 
 ```
-2.Navigate to project folder
+  2.Navigate to project folder
 
 3. Install dependencies:
 ```
