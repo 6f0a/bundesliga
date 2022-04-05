@@ -1,4 +1,5 @@
 from tkinter.tix import DECREASING
+from django.http import HttpResponse
 from django.shortcuts import render
 from zeep import Client
 
@@ -81,27 +82,33 @@ def teams(request):
 
 def team_detail(request, id):
     team = []
+    allID = []
     allTeams = client.service.GetTeamsByLeagueSaison('bl1', season)
-    all_matches = client.service.GetMatchdataByLeagueSaison('bl1', season)
-    for y in allTeams:
-        if y['teamID'] == id:
-            team.append(y)
-    win_counter,lose_counter,win_percentage = win_loss_detail(all_matches,id)
-    print(win_counter,lose_counter,win_percentage)
+    for i in allTeams:
+        allID.append(i['teamID'])
+    if id in allID:
+        all_matches = client.service.GetMatchdataByLeagueSaison('bl1', season)
+        for y in allTeams:
+            if y['teamID'] == id:
+                team.append(y)
+        win_counter,lose_counter,win_percentage = win_loss_detail(all_matches,id)
+        print(win_counter,lose_counter,win_percentage)
 
-    for y in team:
-        y['win_counter'] = win_counter
-        y['lose_counter'] = lose_counter
-        y['win_percentage'] = win_percentage
-    
-    next_match = client.service.GetNextMatchByLeagueTeam(4500, id)
-    latest_results = []
-    for y in all_matches:
-        if y['idTeam1'] == id and y['pointsTeam1'] == True  or y['idTeam2'] == id and y['pointsTeam1'] == True:
-            latest_results.append(y)
+        for y in team:
+            y['win_counter'] = win_counter
+            y['lose_counter'] = lose_counter
+            y['win_percentage'] = win_percentage
+        
+        next_match = client.service.GetNextMatchByLeagueTeam(4500, id)
+        latest_results = []
+        for y in all_matches:
+            if y['idTeam1'] == id and y['pointsTeam1'] == True  or y['idTeam2'] == id and y['pointsTeam1'] == True:
+                latest_results.append(y)
 
-    return render(request, 'teams/team_details.html',{
-        'team':team,
-        'next_match':next_match,
-        'latest_results':reversed(latest_results[-5:]),
-    })
+        return render(request, 'teams/team_details.html',{
+            'team':team,
+            'next_match':next_match,
+            'latest_results':reversed(latest_results[-5:]),
+        })
+    else:
+        return HttpResponse('<h1>Team not found</h1>')
