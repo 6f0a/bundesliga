@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+    {% block title %}
+        Matchlist
+    {% endblock %}
+
+    {% block content %}
+    {% for i in team %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{i.teamName}}</h1>
+                <img class='details-icon'src="{{ i.teamIconURL }}" alt="TeamIcon" class="img-responsive">
+                <h3>Win percentage:{{ i.win_percentage }}%</h3>
+                <a>W:{{ i.win_counter }}  L:{{ i.lose_counter }}</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <h1>Next Match :</h1>
+    <h3>{{ next_match.matchDateTime.date }}</h3>
+
+    <div class="match-box">
+        <div class ="header">
+            <img src="{{ next_match.iconUrlTeam1 }}" alt="Home Team">
+            <h2>{{next_match.nameTeam1}} - {{next_match.nameTeam2}}</h2>
+            <img src="{{ next_match.iconUrlTeam2 }}" alt="Away Team">
+        </div>
+        <p>{{ next_match.matchDateTime.time }}</p>
+    </div>
+
+    <h1>Latest Results:</h1>
+    {% for i in latest_results %}
+    <h3>{{ i.matchDateTime }}</h3>
+
+    <div class="match-box">
+        <div class ="header">
+            <img src="{{ i.iconUrlTeam1 }}" alt="Home Team">
+            <h2>{{i.nameTeam1}} {{i.pointsTeam1}} : {{i.pointsTeam2}} {{ i.nameTeam2 }}</h2>
+            <img src="{{ i.iconUrlTeam2 }}" alt="Away Team">
+        </div>
+    </div>
+
+    {% endfor %}
+
+    
+    {% endblock %}

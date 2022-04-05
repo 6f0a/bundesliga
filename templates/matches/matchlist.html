@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+    {% block title %}
+        Matchlist
+    {% endblock %}
+
+    {% block content %}
+    <h1>Fixtures</h1>
+        <select onchange="location = this.value";>
+            {% for y in allRounds %}
+            <option value="{% url 'fixtures' y.groupOrderID %}" {% if matchday == y.groupOrderID %} selected {% endif %}> Matchday {{ y.groupOrderID }}</option>
+            {% endfor %}
+        </select>
+
+        <div class='fixtures'>
+            <table>
+                <div class="matchday">
+                    <h2> Round {{ matchday }}</h2>
+                </div>
+                {% for dict_item in matchlist %}
+                    <tr class="match">
+                        <td class="hour">{{ dict_item.Spieldatum }}</td>
+                        <td>{{ dict_item.Team1 }}</td>
+                        {% if dict_item.ErgebnisTeam1 >= 0 %}
+                        <td>{{ dict_item.ErgebnisTeam1 }}:{{ dict_item.ErgebnisTeam2 }}</td>
+                        {% endif %}
+                        <td>{{ dict_item.Team2 }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endblock %}

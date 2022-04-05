@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+    {% block title %}
+        Matchlist
+    {% endblock %}
+
+    {% block content %}
+
+    {% for result in page.object_list %}
+    <div class="results">
+           <a class="result" href="{% url 'team_detail' result.object.id %} ">{{ result.object.name }}</a>
+    </div>
+        {% empty %}           
+         <h1>No Results Found</h1>
+    {% endfor %}
+
+    {% endblock %}

@@ -1,0 +1,156 @@
+.content{
+    margin: 7rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+
+.match{
+    background-color: #f2f2f2;
+    border-bottom: 1px solid black
+}
+
+.match:hover{
+    background-color: #e4e4da;
+}
+
+.matchday{
+    margin-top: 1rem;
+    padding: 1px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.hour{
+    border-right:1px solid gray
+}
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.match-box {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.match-box:hover{
+    background-color: #e4e4da;
+}
+
+img{
+    margin: 1rem;
+    width: 3%;
+    height: 3%;
+    border-radius: 10px;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.teams-box{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#teams-match-box{
+    width: 100%;
+    height: 15rem;
+}
+
+#teams-id{
+    width:5rem;
+    height:5rem;
+}
+
+#green-percentage{
+    color: green;
+}
+#red-percentage{
+    color: red;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.search-container {
+    float: right;
+}
+
+.search-container input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.search-button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-button :hover {
+    background: #ccc;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+}
+.details-icon{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 10px;
+}
+.result{
+    font-size: 3rem;
+}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+    {% block title %}
+        Matchlist
+    {% endblock %}
+
+    {% block content %}
+    
+    {% for i in allTeams %}
+        <div class="teams-box">
+            <div class="match-box" id="teams-match-box">
+                <div class ="header">
+                    <img id="teams-id" src="{{i.teamIconURL}}" alt=" {{ i.teamName }} Icon">
+                    <h2>{{ i.teamName }}</h2>
+                </div>
+                {% if i.win_percentage >= 50 %}
+                <a id="green-percentage">Win Percentage : {{ i.win_percentage }} %</a>
+                {% else %}
+                <a id="red-percentage">Win Percentage : {{ i.win_percentage }} %</a>
+                {% endif %}
+                <a>W:{{i.win_counter}} L: {{ i.lose_counter }}</a>
+            </div>            
+        </div>
+
+    {% endfor %}
+    {% endblock %}

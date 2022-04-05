@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+    {% block title %}
+        Matchlist
+    {% endblock %}
+
+    {% block content %}
+    <h1> Upcoming Matches </h1>
+
+    {% for i in next_match %}
+
+    {% ifchanged %}
+
+    <h1>{{ i.matchDateTime.date }}</h1>
+
+    {% endifchanged %}
+
+    <div class="match-box">
+        <div class ="header">
+            <img src="{{ i.iconUrlTeam1 }}" alt="Home Team">
+            <h2>{{i.nameTeam1}} - {{i.nameTeam2}}</h2>
+            <img src="{{ i.iconUrlTeam2 }}" alt="Away Team">
+        </div>
+        <p>{{ i.matchDateTime.time }}</p>
+    </div>
+    {% endfor %}
+
+    {% endblock %}

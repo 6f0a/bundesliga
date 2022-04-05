@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+            <link rel="stylesheet" href="{% static 'styles.css' %}" />
+            <title>{% block title %}{% endblock %}</title>
+        </head>
+        <body>
+            <div class="navbar">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'teams' %}">Teams</a>
+                <a href="{% url 'fixtures' 1 %}">Matches</a>
+                <div class="search-container">
+                    <form action="/search" method="GET" >
+                        <input type="text" placeholder="Search.." name="q">
+                        <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </body>
+    </html>
