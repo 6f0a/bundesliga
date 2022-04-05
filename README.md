@@ -6,13 +6,15 @@ Simple app for results in BundesLiga with API provided by http://www.openligadb.
 
 ```
 git clone https://github.com/6f0a/bundesliga
-Navigate to project folder
+
 ```
-2. Install dependencies:
+2.Navigate to project folder
+
+3. Install dependencies:
 ```
 pip install -r requirements.txt
 ```
-3. Run development server:
+4. Run development server:
 ```
 python manage.py runserver
 ```
